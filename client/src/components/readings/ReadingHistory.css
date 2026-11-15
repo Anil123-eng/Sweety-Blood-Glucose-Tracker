@@ -1,0 +1,29 @@
+.reading-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.reading-card {
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fafafa;
+  margin-bottom: 10px;
+}
+
+.reading-card p {
+  margin-bottom: 7px;
+  color: #777;
+  font-size: 17px;
+}
+
+/* Edit and Delete Buttons */
+.auth-container .reading-card button {
+  display: inline-block;
+  width: 48%;
+  margin: 5px 1%;
+  padding: 10px;
+  font-size: 17px;
+}
