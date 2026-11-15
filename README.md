@@ -170,13 +170,21 @@ Protected endpoints require a valid JWT Bearer token.
 - Future reading dates are rejected.
 - Duplicate reading slots for the same date and user are prevented.
 
+
 ## Sample Data
 
-To insert sample readings for an already registered user:
+To create a demo user and insert sample glucose readings, run these commands from the server directory:
 
 ```bash
-node seed.js registered-email@example.com
+node seed.js demo@example.com your_demo_password
 ```
+
+This script:
+- Creates a demo user if the email does not already exist.
+- Hashes the password using bcrypt.
+- Inserts four sample glucose readings.
+- Avoids duplicate readings when run again.
+
 
 ## Screenshots
 
