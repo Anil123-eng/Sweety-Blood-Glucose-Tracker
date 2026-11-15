@@ -195,6 +195,24 @@ node seed.js registered-email@example.com
 ### Glucose Reports
 ![Glucose Reports](screenshots/reports.png)
 
+
+## Notes
+
+### Assumptions
+- Each user can access only their own glucose readings.
+- A user can add a maximum of four readings per day, one for each time slot.
+- Glucose values must be whole numbers between 40 and 600 mg/dL.
+- Future dates are not allowed for glucose readings.
+- Monthly Report displays readings from the first day of the current month up to the selected date.
+- Previous Month Report displays readings for the entire previous calendar month.
+
+### Future Improvements
+- Add interactive charts to visualize glucose trends.
+- Implement pagination for reading history.
+- Add automated backend and frontend tests.
+- Improve deployment and production configuration.
+- Add a doctor role to allow authorized healthcare professionals to view patient reports.
+
 ## Author
 
 M. Anil
