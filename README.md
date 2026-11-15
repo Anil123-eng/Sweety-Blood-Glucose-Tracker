@@ -13,8 +13,7 @@ A full-stack web application that allows users to securely record, manage, and m
   - After lunch
   - After dinner
 - Daily glucose reports
-- Monthly glucose reports
-- Previous month reports
+- Current month and previous month reports
 - Summary statistics: highest, lowest, average, and total readings
 - User-specific data access and protection
 - Responsive React interface
@@ -54,6 +53,7 @@ Sweety/
 │   ├── seed.js
 │   ├── package.json
 │   └── .env.example
+├── screenshots/
 └── README.md
 ```
 
@@ -64,18 +64,18 @@ Sweety/
 
 ## Installation and Setup
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd Sweety
+git clone https://github.com/Anil123-eng/Sweety-Blood-Glucose-Tracker.git
+cd Sweety-Blood-Glucose-Tracker
 ```
 
 ### 2. Database Setup
 
 Create a PostgreSQL database named `sweety_db`.
 
-Create the following tables:
+Connect to the database and execute:
 
 ```sql
 CREATE TABLE users (
@@ -114,17 +114,21 @@ CREATE TABLE glucose_readings (
 
 ### 3. Backend Setup
 
+Open a terminal in the project directory:
+
 ```bash
 cd server
 npm install
 ```
 
-Create a `.env` file using `.env.example` and configure your PostgreSQL credentials and JWT secret.
+Create a `.env` file using `.env.example`.
+
+Configure your PostgreSQL credentials and JWT secret in the `.env` file.
 
 Start the backend:
 
 ```bash
-node index.js
+npm start
 ```
 
 Backend runs at:
@@ -133,7 +137,7 @@ Backend runs at:
 
 ### 4. Frontend Setup
 
-Open another terminal:
+Open another terminal in the project directory:
 
 ```bash
 cd client
@@ -166,55 +170,83 @@ Protected endpoints require a valid JWT Bearer token.
 - Passwords are hashed using bcrypt.
 - JWT authentication protects private API endpoints.
 - Users can access only their own glucose readings.
-- Glucose values must be between 40 and 600.
+- Glucose values must be whole numbers between 40 and 600 mg/dL.
 - Future reading dates are rejected.
 - Duplicate reading slots for the same date and user are prevented.
 
-
 ## Sample Data
 
-To create a demo user and insert sample glucose readings, run these commands from the server directory:
+To create a demo user and insert sample glucose readings, run the following command from the `server` directory:
 
 ```bash
 node seed.js demo@example.com your_demo_password
 ```
 
-This script:
+The seed script:
+
 - Creates a demo user if the email does not already exist.
 - Hashes the password using bcrypt.
 - Inserts four sample glucose readings.
 - Avoids duplicate readings when run again.
 
+Use a demo-only password when running this command.
+
+## Running Tests
+
+Automated backend and frontend tests have not yet been implemented.
+
+The application was manually tested for:
+
+- User registration and login
+- Adding, editing, viewing, and deleting glucose readings
+- Daily, current month, and previous month reports
+- User-specific data access
+- Backend and database connectivity
+
+To verify the frontend production build, run:
+
+```bash
+cd client
+npm run build
+```
+
+Automated backend and frontend tests are planned as future improvements.
 
 ## Screenshots
 
 ### Login Page
+
 ![Login Page](screenshots/login.png)
 
 ### Register Page
+
 ![Register Page](screenshots/register.png)
 
 ### Dashboard
+
 ![Dashboard](screenshots/dashboard.png)
 
 ### Glucose Reading History
+
 ![Reading History](screenshots/reading-history.png)
 
 ### Glucose Reports
-![Glucose Reports](screenshots/reports.png)
 
+![Glucose Reports](screenshots/reports.png)
 
 ## Notes
 
 ### Assumptions
+
 - Each user can access only their own glucose readings.
 - A user can add a maximum of four readings per day, one for each time slot.
 - Glucose values must be whole numbers between 40 and 600 mg/dL.
 - Future dates are not allowed for glucose readings.
-- Monthly Report displays readings from the first day of the current month up to the selected date.
+- Current Month Report displays readings from the first day of the current month up to the selected date.
 - Previous Month Report displays readings for the entire previous calendar month.
 
 ### Future Improvements
+
 - Add interactive charts to visualize glucose trends.
 - Implement pagination for reading history.
 - Add automated backend and frontend tests.
@@ -223,6 +255,6 @@ This script:
 
 ## Author
 
-M. Anil
+**M. Anil**
 
 B.Tech – Computer Science and Engineering
